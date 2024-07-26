@@ -19,3 +19,8 @@ func GetLastDayOfYear(t time.Time) time.Time {
 	// 返回下一年第一天的前一天，即为指定年的最后一天
 	return nextYear.AddDate(0, 0, -1)
 }
+
+// GetYesterdayOfLastYear 获取去年的昨天
+func GetYesterdayOfLastYear() time.Time {
+	return time.Now().AddDate(-1, 0, -1)
+}
