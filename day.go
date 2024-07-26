@@ -6,12 +6,16 @@ import (
 
 // GetYesterday 获取昨天
 func GetYesterday() time.Time {
-	return time.Now().AddDate(0, 0, -1)
+	now := time.Now()
+	yesterday := now.AddDate(0, 0, -1)
+	return time.Date(yesterday.Year(), yesterday.Month(), yesterday.Day(), 0, 0, 0, 0, now.Location())
 }
 
 // GetTomorrow 获取明天
 func GetTomorrow() time.Time {
-	return time.Now().AddDate(0, 0, 1)
+	now := time.Now()
+	tomorrow := now.AddDate(0, 0, 1)
+	return time.Date(tomorrow.Year(), tomorrow.Month(), tomorrow.Day(), 0, 0, 0, 0, now.Location())
 }
 
 func GetLastMonday() time.Time {
