@@ -76,3 +76,8 @@ func TestGetThisWeekSunday(t *testing.T) {
 	log.Println("获取传入时间对应的本周星期日")
 	log.Println(GetThisWeekSunday(time.Now()))
 }
+
+func TestGetNext31DaysRange(t *testing.T) {
+	log.Println("获取指定日期对应的之后31天时间范围")
+	log.Println(GetNext31DaysRange(time.Now()))
+}

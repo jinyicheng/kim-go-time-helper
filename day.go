@@ -95,3 +95,15 @@ func GetLastSaturday(t time.Time) time.Time {
 func GetLastSunday(t time.Time) time.Time {
 	return GetThisWeekMonday(t).AddDate(0, 0, -1)
 }
+
+// GetNext31DaysRange 获取指定日期对应的之后31天时间范围
+func GetNext31DaysRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetNextFewDaysRange(t, 31)
+}
+
+// GetNextFewDaysRange 获取指定日期对应的之后几天时间范围
+func GetNextFewDaysRange(t time.Time, numberOfDays int) (startTime time.Time, endTime time.Time) {
+	startDate := startOfDate(t).AddDate(0, 0, 1)
+	endDate := startDate.AddDate(0, 0, numberOfDays)
+	return startDate, endOfDate(endDate)
+}
