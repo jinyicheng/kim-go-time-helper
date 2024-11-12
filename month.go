@@ -15,9 +15,9 @@ func GetFirstDayOfCurrentMonth() time.Time {
 }
 
 // GetFirstDayOfNextMonth 获取下个月的第一天
-func GetFirstDayOfNextMonth() time.Time {
+func GetFirstDayOfNextMonth(t time.Time) time.Time {
 	// 同样直接调用GetFirstDayOfMonth并加上一个月
-	return GetFirstDayOfMonth(time.Now().AddDate(0, 1, 0))
+	return GetFirstDayOfMonth(t.AddDate(0, 1, 0))
 }
 
 // GetFirstDayOfMonth 获取指定日期对应的月第一天
@@ -29,23 +29,40 @@ func GetFirstDayOfMonth(t time.Time) time.Time {
 // GetLastDayOfCurrentMonth 获取本月的最后一天
 func GetLastDayOfCurrentMonth() time.Time {
 	// 获取下个月的第一天然后减去一天
-	return GetFirstDayOfNextMonth().AddDate(0, 0, -1)
+	return GetFirstDayOfNextMonth(time.Now()).AddDate(0, 0, -1)
 }
 
 // GetLastDayOfLastMonth 获取上个月的最后一天
-func GetLastDayOfLastMonth() time.Time {
+func GetLastDayOfLastMonth(t time.Time) time.Time {
 	// 获取本月的第一天然后减去一天
-	return GetFirstDayOfCurrentMonth().AddDate(0, 0, -1)
+	return GetFirstDayOfMonth(t).AddDate(0, 0, -1)
 }
 
 // GetLastDayOfNextMonth 获取下个月的最后一天
-func GetLastDayOfNextMonth() time.Time {
+func GetLastDayOfNextMonth(t time.Time) time.Time {
 	// 获取下下个月的第一天然后减去一天
-	return GetFirstDayOfNextMonth().AddDate(0, 1, -1)
+	return GetFirstDayOfNextMonth(t).AddDate(0, 1, -1)
 }
 
 // GetLastDayOfMonth 获取指定日期对应的月最后一天
 func GetLastDayOfMonth(t time.Time) time.Time {
 	// 获取指定月份的下个月的第一天然后减去一天
 	return GetFirstDayOfMonth(t.AddDate(0, 1, 0)).AddDate(0, 0, -1)
+}
+
+// GetNext3MonthsRange 获取指定日期对应的后3个月时间范围
+func GetNext3MonthsRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetNextFewMonthsRange(t, 3)
+}
+
+// GetNextMonthRange 获取指定日期对应的下个月时间范围
+func GetNextMonthRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetNextFewMonthsRange(t, 1)
+}
+
+// GetNextFewMonthsRange 获取指定日期对应的后几个月时间范围
+func GetNextFewMonthsRange(t time.Time, numberOfMonths int) (startTime time.Time, endTime time.Time) {
+	startDate := GetFirstDayOfMonth(t).AddDate(0, 1, 0)
+	endDate := startDate.AddDate(0, numberOfMonths, -1)
+	return startDate, endOfDate(endDate)
 }
