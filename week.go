@@ -28,3 +28,25 @@ func GetNextWeekRange(t time.Time) (startTime time.Time, endTime time.Time) {
 	// 返回下周第一天和最后一天的凌晨时间
 	return startOfDate(startTime), endOfDate(endTime)
 }
+
+// GetLastWeekRange 获取指定日期对应的上周时间范围
+func GetLastWeekRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetLastMonday(t), endOfDate(GetLastSunday(t))
+}
+
+// GetPast1WeekRange 获取指定日期对应的过去1周时间范围
+func GetPast1WeekRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetPastFewWeeksRange(t, 1)
+}
+
+// GetPast3WeeksRange 获取指定日期对应的过去3周时间范围
+func GetPast3WeeksRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetPastFewWeeksRange(t, 3)
+}
+
+// GetPastFewWeeksRange 获取指定日期对应的过去几周时间范围
+func GetPastFewWeeksRange(t time.Time, numberOfWeeks int) (startTime time.Time, endTime time.Time) {
+	endDate := endOfDate(t.AddDate(0, 0, -1))
+	startDate := endDate.AddDate(0, 0, -numberOfWeeks*7)
+	return startOfDate(startDate), endDate
+}

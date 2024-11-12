@@ -30,3 +30,20 @@ func GetNextYearRange(t time.Time) (startTime time.Time, endTime time.Time) {
 	endDate := endOfDate(GetLastDayOfYear(startDate))
 	return startDate, endDate
 }
+
+// GetPast1YearRange 获取指定日期对应的过去1年时间范围
+func GetPast1YearRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetPastFewYearsRange(t, 1)
+}
+
+// GetPast3YearsRange 获取指定日期对应的过去3年时间范围
+func GetPast3YearsRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetPastFewYearsRange(t, 3)
+}
+
+// GetPastFewYearsRange 获取指定日期对应的过去几年时间范围
+func GetPastFewYearsRange(t time.Time, numberOfYears int) (startTime time.Time, endTime time.Time) {
+	endDate := startOfDate(t.AddDate(0, 0, -1))
+	startDate := endDate.AddDate(0, -numberOfYears, 0)
+	return startOfDate(startDate), endOfDate(endDate)
+}

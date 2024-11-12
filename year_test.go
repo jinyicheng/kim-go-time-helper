@@ -26,3 +26,11 @@ func TestGetNextYearRange(t *testing.T) {
 	log.Println("获取指定日期对应的明年")
 	log.Println(GetNextYearRange(time.Now()))
 }
+func TestGetPast1YearRange(t *testing.T) {
+	log.Println("获取指定日期对应的过去1年时间范围")
+	log.Println(GetPast1YearRange(time.Now()))
+}
+func TestGetPast3YearsRange(t *testing.T) {
+	log.Println("获取指定日期对应的过去3年时间范围")
+	log.Println(GetPast3YearsRange(time.Now()))
+}

@@ -8,7 +8,7 @@ import (
 
 func TestGetFirstDayOfLastMonth(t *testing.T) {
 	log.Println("获取上个月第一天")
-	log.Println(GetFirstDayOfLastMonth())
+	log.Println(GetFirstDayOfLastMonth(time.Now()))
 }
 func TestGetFirstDayOfCurrentMonth(t *testing.T) {
 	log.Println("获取本月第一天")
@@ -24,7 +24,7 @@ func TestGetFirstDayOfMonth(t *testing.T) {
 }
 func TestGetLastDayOfCurrentMonth(t *testing.T) {
 	log.Println("获取本月最后一天")
-	log.Println(GetLastDayOfCurrentMonth())
+	log.Println(GetLastDayOfCurrentMonth(time.Now()))
 }
 func TestGetLastDayOfLastMonth(t *testing.T) {
 	log.Println("获取上个月最后一天")

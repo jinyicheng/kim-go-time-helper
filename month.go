@@ -3,9 +3,9 @@ package timeHelper
 import "time"
 
 // GetFirstDayOfLastMonth 获取上个月的第一天
-func GetFirstDayOfLastMonth() time.Time {
+func GetFirstDayOfLastMonth(t time.Time) time.Time {
 	// 直接使用GetFirstDayOfMonth并向前推一个月
-	return GetFirstDayOfMonth(time.Now().AddDate(0, -1, 0))
+	return GetFirstDayOfMonth(t.AddDate(0, -1, 0))
 }
 
 // GetFirstDayOfCurrentMonth 获取本月的第一天
@@ -27,9 +27,9 @@ func GetFirstDayOfMonth(t time.Time) time.Time {
 }
 
 // GetLastDayOfCurrentMonth 获取本月的最后一天
-func GetLastDayOfCurrentMonth() time.Time {
+func GetLastDayOfCurrentMonth(t time.Time) time.Time {
 	// 获取下个月的第一天然后减去一天
-	return GetFirstDayOfNextMonth(time.Now()).AddDate(0, 0, -1)
+	return GetFirstDayOfNextMonth(t).AddDate(0, 0, -1)
 }
 
 // GetLastDayOfLastMonth 获取上个月的最后一天
