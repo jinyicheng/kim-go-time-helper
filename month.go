@@ -66,3 +66,25 @@ func GetNextFewMonthsRange(t time.Time, numberOfMonths int) (startTime time.Time
 	endDate := startDate.AddDate(0, numberOfMonths, -1)
 	return startDate, endOfDate(endDate)
 }
+
+// GetLastMonthRange 获取指定日期对应的上个月时间范围
+func GetLastMonthRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetFirstDayOfLastMonth(t), endOfDate(GetLastDayOfLastMonth(t))
+}
+
+// GetPast1MonthRange 获取指定日期对应的过去1个月时间范围
+func GetPast1MonthRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetPastFewMonthsRange(t, 1)
+}
+
+// GetPast3MonthsRange 获取指定日期对应的过去3个月时间范围
+func GetPast3MonthsRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetPastFewMonthsRange(t, 3)
+}
+
+// GetPastFewMonthsRange 获取指定日期对应的过去几个月时间范围
+func GetPastFewMonthsRange(t time.Time, numberOfMonths int) (startTime time.Time, endTime time.Time) {
+	endDate := startOfDate(t.AddDate(0, 0, -1))
+	startDate := endDate.AddDate(0, -numberOfMonths, 0)
+	return startOfDate(startDate), endOfDate(endDate)
+}

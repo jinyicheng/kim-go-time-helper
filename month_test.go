@@ -51,3 +51,18 @@ func TestGetNextFewMonthsRange(t *testing.T) {
 	log.Println("之后6个月起止")
 	log.Println(GetNextFewMonthsRange(time.Now(), 6))
 }
+
+func TestGetLastMonthRange(t *testing.T) {
+	log.Println("获取指定日期对应的上个月时间范围")
+	log.Println(GetLastMonthRange(time.Now()))
+}
+
+func TestGetPast1MonthRange(t *testing.T) {
+	log.Println("获取指定日期对应的过去1个月时间范围")
+	log.Println(GetPast1MonthRange(time.Now()))
+}
+
+func TestGetPast3MonthsRange(t *testing.T) {
+	log.Println("获取指定日期对应的过去3个月时间范围")
+	log.Println(GetPast3MonthsRange(time.Now()))
+}
