@@ -42,6 +42,8 @@ func TestGetLastDayOfMonth(t *testing.T) {
 func TestGetNext3MonthsRange(t *testing.T) {
 	log.Println("之后3个月起止")
 	log.Println(GetNext3MonthsRange(time.Now()))
+	log.Println(GetNext3MonthsRange(time.Date(2024, 12, 1, 0, 0, 0, 0, time.Local)))
+	log.Println(GetNext3MonthsRange(time.Date(2025, 1, 1, 0, 0, 0, 0, time.Local)))
 }
 func TestGetNextMonthRange(t *testing.T) {
 	log.Println("下个月起止")

@@ -80,4 +80,13 @@ func TestGetThisWeekSunday(t *testing.T) {
 func TestGetNext31DaysRange(t *testing.T) {
 	log.Println("获取指定日期对应的之后31天时间范围")
 	log.Println(GetNext31DaysRange(time.Now()))
+	log.Println(GetNext31DaysRange(time.Date(2024, time.November, 25, 0, 0, 0, 0, time.Local)))
+	log.Println(GetNext31DaysRange(time.Date(2024, time.December, 2, 0, 0, 0, 0, time.Local)))
+}
+
+func TestGetPast31DaysRange(t *testing.T) {
+	log.Println("获取指定日期对应的之前31天时间范围")
+	log.Println(GetPast31DaysRange(time.Now()))
+	log.Println(GetPast31DaysRange(time.Date(2024, time.November, 25, 0, 0, 0, 0, time.Local)))
+	log.Println(GetPast31DaysRange(time.Date(2024, time.December, 2, 0, 0, 0, 0, time.Local)))
 }

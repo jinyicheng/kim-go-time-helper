@@ -107,3 +107,15 @@ func GetNextFewDaysRange(t time.Time, numberOfDays int) (startTime time.Time, en
 	endDate := startDate.AddDate(0, 0, numberOfDays)
 	return startDate, endOfDate(endDate)
 }
+
+// GetPast31DaysRange 获取指定日期对应的之前31天时间范围
+func GetPast31DaysRange(t time.Time) (startTime time.Time, endTime time.Time) {
+	return GetPastFewDaysRange(t, 31)
+}
+
+// GetPastFewDaysRange 获取指定日期对应的之前几天时间范围
+func GetPastFewDaysRange(t time.Time, numberOfDays int) (startTime time.Time, endTime time.Time) {
+	endDate := startOfDate(t).AddDate(0, 0, -1)
+	startDate := endDate.AddDate(0, 0, -numberOfDays)
+	return startDate, endOfDate(endDate)
+}
